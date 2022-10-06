@@ -1,36 +1,31 @@
-#include "holberton.h"
+#include "main.h"
 
 /**
- * _strspn - Gets the length of a prefix substring.
- * @s: The string to be searched.
- * @accept: The prefix to be measured.
- *
- * Return: The number of bytes in s which
- *         consist only of bytes from accept.
+ * _strspn - gets the length of a prefix substring
+ * @s: string to be searched
+ * @accept: bytes to be accepted
+ * Return: number to bytes in the initial segment of s
  */
-
-
 unsigned int _strspn(char *s, char *accept)
 {
-	unsigned int bytes = 0;
-	int i;
+	unsigned int res = 0;
+	int i, foundChar;
 
 	while (*s)
 	{
 		for (i = 0; accept[i]; i++)
 		{
+			foundChar = 0;
 			if (*s == accept[i])
 			{
-				bytes++;
+				res++;
+				foundChar = 1;
 				break;
 			}
-
-			else if (accept[i + 1] == '\0')
-				return (bytes);
 		}
-
+		if (!foundChar)
+			break;
 		s++;
 	}
-
-	return (bytes);
+	return (res);
 }
